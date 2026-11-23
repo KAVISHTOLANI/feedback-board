@@ -1,0 +1,225 @@
+/* Signal Board specific styles */
+.cat-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--c) 12%, var(--surface));
+  color: color-mix(in srgb, var(--c) 80%, var(--text));
+  white-space: nowrap;
+}
+.cat-tag::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c);
+}
+.hero-sb {
+  display: grid;
+  gap: 12px;
+}
+.hero-sb-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.hero-sb-counts b {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--text);
+  margin-right: 5px;
+}
+
+/* Matrix */
+.matrix {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.matrix svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.q-win {
+  fill: color-mix(in srgb, var(--ok) 8%, transparent);
+}
+.q-lbl {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: var(--muted);
+}
+.q-div {
+  stroke: var(--rule);
+  stroke-dasharray: 4 4;
+}
+.axis-line {
+  stroke: var(--rule);
+}
+.ax {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--muted);
+}
+.dot {
+  outline: none;
+  cursor: default;
+  animation: pop 0.5s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+.dot circle {
+  fill: color-mix(in srgb, var(--c) 70%, transparent);
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+.dot:focus-visible circle,
+.dot:hover circle {
+  stroke: var(--text);
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+}
+
+/* Inbox */
+.span-2 {
+  grid-column: span 2;
+}
+@media (max-width: 720px) {
+  .span-2 {
+    grid-column: auto;
+  }
+}
+.similar {
+  padding: 12px 14px;
+  background: var(--warn-soft);
+  border-radius: var(--radius);
+}
+.similar ul {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.similar li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.inbox {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.inbox .card {
+  display: grid;
+  gap: 6px;
+}
+.in-title {
+  font-weight: 600;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+.inbox p {
+  margin: 0;
+}
+.q {
+  margin: 0;
+  padding: 6px 12px;
+  border-left: 3px solid var(--rule);
+  font-style: italic;
+  color: var(--text-2);
+}
+.mentions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.mentions li {
+  display: grid;
+  gap: 4px;
+}
+.dupe-inline {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin: 4px 8px 0 0;
+}
+
+/* Kanban */
+.kanban {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  align-items: start;
+}
+@media (max-width: 1100px) {
+  .kanban {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  }
+}
+.kcol {
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+}
+.kcol-head {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.kcards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.kcard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--c);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.kcard a {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+  }
+}
+.matrix svg {
+  max-width: 680px;
+}
